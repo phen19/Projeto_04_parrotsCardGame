@@ -1,4 +1,4 @@
-let imagens = [ "bobrossparrot", "bobrossparrot" , "explodyparrot", "explodyparrot","fiestaparrot", "fiestaparrot", "metalparrot", "metalparrot", "revertitparrot","revertitparrot", "tripletsparrot", "tripletsparrot", "unicornparrot","unicornparrot"]
+let imagens = [ "bobrossparrot", "bobrossparrot" , "explodyparrot", "explodyparrot","fiestaparrot", "fiestaparrot", "metalparrot", "metalparrot", "revertitparrot","revertitparrot", "tripletsparrot", "tripletsparrot", "unicornparrot","unicornparrot"];
 let primeiroClick;
 let segundoClick;
 let jogadas = 0;
@@ -21,8 +21,8 @@ function incrementaContador(){
 function iniciarJogo() {
     let qtd = prompt("Com quantas cartas você quer jogar? (4 a 14)");
     if  (qtd % 2 !== 0 || qtd < 4 || qtd > 14) {
-        alert("Necessário selecionar um número par entre 4 e 14")
-     qtd = 0;
+        alert("Necessário selecionar um número par entre 4 e 14");
+        qtd = 0;
         iniciarJogo();
     } else {
         inserirCartas (qtd);
@@ -37,8 +37,7 @@ function inserirCartas(qtd) {
     for( let contador1 = 0; contador1< qtd; contador1++){
         cartasEmbaralhadas.push(imagens[contador1]);
     }
-
-    cartasEmbaralhadas.sort(embaralhar)
+    cartasEmbaralhadas.sort(embaralhar);
     for (let contador2 = 0; contador2 < cartasEmbaralhadas.length; contador2++) {
       lista.innerHTML += ` <div class="card" onclick = "selecionarCarta(this)">
                                 <div class="front-face face">
@@ -48,7 +47,7 @@ function inserirCartas(qtd) {
                                     <img class ="verso"src="/images/${cartasEmbaralhadas[contador2]}.gif">
                                 </div>
                             </div>
-                            `
+                            `;
     }
 }    
 
@@ -98,6 +97,19 @@ function gameOver() {
         acertos = 0;
         jogadas = 0;
         reiniciarJogo();
+    }
+}
+
+function reiniciarJogo(){
+    let reiniciar = prompt("Gostaria de reiniciar a partida? (sim/não)");
+    if (reiniciar === "sim"){
+        iniciarJogo();
+        iniciarTimer();
+    } else if (reiniciar === "não"){
+        alert("Até a próxima!")
+    }else{
+        alert("Texto precisa ser sim ou não, com a devida pontuação");
+        reiniciarJogo()
     }
 }
 

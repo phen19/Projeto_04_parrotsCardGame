@@ -14,7 +14,7 @@ body {
 }
 
 ul, li {
-  display: flex;
+    display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
@@ -45,7 +45,13 @@ ul, li {
 }
 
 .segundo{
- font-size: 26px
+ font-size: 36px;
+ width: 50px;
+ text-align: center;
+ background-color: black;
+ color: #75B79E;
+ border-radius: 10px;
+ border: 1px solid forestgreen;
 }
 
 .container-card{
@@ -95,8 +101,6 @@ ul, li {
   .front-face.virado {
     transform: rotateY(-180deg);
   }
-
-/* Mobile */
 
 @media (max-width: 640px) {
     .titulo {
