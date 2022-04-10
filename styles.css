@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
+@font-face {
+  font-family: digital;
+  src: url(/images/digital.ttf);
+}
+
 *{
     box-sizing: border-box;
 }
@@ -10,6 +15,10 @@ body {
 
 ul, li {
   display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
 }
 
 .container{
@@ -28,10 +37,22 @@ ul, li {
     margin-bottom: 40px;
 }
 
+.timer{
+  width: 100%;
+  display:flex;
+  justify-content: flex-end;
+  font-family:digital;
+}
+
+.segundo{
+ font-size: 26px
+}
+
 .container-card{
   display: flex;
   flex-wrap: wrap;
-  /*width: 872px;*/
+  justify-content: center;
+  width: 1000px;
 }
 
 .card{
@@ -40,7 +61,12 @@ ul, li {
     position: relative;
     margin-right: 34px;
     margin-bottom: 34px;
-    /*background-color: #A7E9AF;*/
+}
+
+.card img{
+  width: 100px;
+  height: 100px;
+  border: 0px;
 }
 
 .face {
@@ -69,12 +95,6 @@ ul, li {
   .front-face.virado {
     transform: rotateY(-180deg);
   }
-
-.card img{
-    width: 100px;
-    height: 100px;
-    border: 0px;
-}
 
 /* Mobile */
 

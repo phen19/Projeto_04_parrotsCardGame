@@ -3,13 +3,20 @@ let primeiroClick;
 let segundoClick;
 let jogadas = 0;
 let acertos = 0;
-let elemento2;
-let check;
+let carta2;
 let qtd;
+let segundos;
 
 
-iniciarJogo();
+function iniciarTimer (){
+    segundos =0;
+    segundos = setInterval(incrementaContador,1000);
+}
 
+function incrementaContador(){
+    segundos ++;
+    document.querySelector('.segundo').innerHTML = new Intl.NumberFormat("pt-BR", { minimumIntegerDigits: 2}).format(segundos);
+} 
 
 function iniciarJogo() {
     let qtd = prompt("Com quantas cartas você quer jogar? (4 a 14)");
@@ -49,20 +56,19 @@ function embaralhar() {
     return Math.random() - 0.5;
 }
 
-function virarCarta(elemento) {
-    elemento.children[0].classList.add("virado");
-    elemento.children[1].classList.add("virado");
+function virarCarta(carta) {
+    carta.children[0].classList.add("virado");
+    carta.children[1].classList.add("virado");
 }
 
-
-function selecionarCarta(elemento) {
-    virarCarta(elemento);
+function selecionarCarta(carta) {
+    virarCarta(carta);
     if (primeiroClick === undefined) { 
         jogadas++;
-        primeiroClick = elemento.children[1].querySelector(".verso").src;
-        elemento2 = elemento.querySelectorAll(".face");
+        primeiroClick = carta.children[1].querySelector(".verso").src;
+        carta2 = carta.querySelectorAll(".face");
     } else {
-        segundoClick = elemento.children[1].querySelector(".verso").src;
+        segundoClick = carta.children[1].querySelector(".verso").src;
         if (primeiroClick == segundoClick) {
             jogadas++;
             acertos++;
@@ -71,10 +77,10 @@ function selecionarCarta(elemento) {
         } else if (primeiroClick != segundoClick) { // cartas selecionadas diferentes, desvirando as duas
                 setTimeout(function () {
                     jogadas++;
-                    elemento2[0].classList.remove("virado");
-                    elemento2[1].classList.remove("virado");
-                    elemento.children[0].classList.remove("virado");
-                    elemento.children[1].classList.remove("virado");
+                    carta2[0].classList.remove("virado");
+                    carta2[1].classList.remove("virado");
+                    carta.children[0].classList.remove("virado");
+                    carta.children[1].classList.remove("virado");
                     primeiroClick = undefined;
                     segundoClick = undefined;
                 }, 1000)
@@ -87,9 +93,13 @@ function gameOver() {
     let lista = document.querySelectorAll("li div");
 
     if (acertos == lista.length/6) { // Checar se o jogo acabou. 3 divs por carta, 2 cartas por imagem = 6. Se acertos(cartas iguais viradas) for igual ao número divs /6
-        alert(`Você ganhou em ${jogadas} jogadas!`);
+        alert(`Você ganhou em ${jogadas} jogadas e em ${segundos} segundos!`);
         win = true;
         acertos = 0;
         jogadas = 0;
+        reiniciarJogo();
     }
 }
+
+iniciarJogo();
+iniciarTimer();
