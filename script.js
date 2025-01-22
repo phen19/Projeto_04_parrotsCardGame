@@ -44,7 +44,7 @@ function inserirCartas(qtd) {
                                     <img src="/images/front.png">
                                 </div>
                                 <div class="back-face face">
-                                    <img class ="verso"src="/images/${cartasEmbaralhadas[contador2]}.gif">
+                                    <img class ="verso"src="images/${cartasEmbaralhadas[contador2]}.gif">
                                 </div>
                             </div>
                             `;
