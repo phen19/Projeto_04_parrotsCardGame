@@ -41,7 +41,7 @@ function inserirCartas(qtd) {
     for (let contador2 = 0; contador2 < cartasEmbaralhadas.length; contador2++) {
       lista.innerHTML += ` <div class="card" onclick = "selecionarCarta(this)">
                                 <div class="front-face face">
-                                    <img src="/images/front.png">
+                                    <img src="images/front.png">
                                 </div>
                                 <div class="back-face face">
                                     <img class ="verso"src="images/${cartasEmbaralhadas[contador2]}.gif">
